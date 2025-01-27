@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vmodel="clr-namespace:MAUI.Models"
              x:Class="MAUI.MainPage"
-              Title="">
+             Title="">
 
     <ContentPage.BindingContext>
         <vmodel:MainPageVM/>
@@ -13,12 +13,12 @@
         <VerticalStackLayout Spacing="32" MinimumWidthRequest="300" Grid.Column="0" HorizontalOptions="FillAndExpand" Padding="15">
             <VerticalStackLayout IsVisible="{Binding CanConnect}">
                 <Label Text="Group"/>
-                <Entry x:Name="eGrupo"/>
+                <Entry Text="{Binding entryGrupo}"/>
             </VerticalStackLayout>
 
             <VerticalStackLayout IsVisible="{Binding CanConnect}">
                 <Label Text="Usuario"/>
-                <Entry x:Name="eUsuario"/>
+                <Entry Text="{Binding entryUsuario}"/>
             </VerticalStackLayout>
 
             <Button Text="Conectar" IsVisible="{Binding CanConnect}" Command="{Binding BtnConectar}"/>
@@ -29,7 +29,7 @@
 
             <VerticalStackLayout IsVisible="{Binding CanSend}">
                 <Label Text="Mensaje"/>
-                <Editor x:Name="eMensaje" AutoSize="TextChanges"/>
+                <Editor Text="{Binding entryMensaje}" AutoSize="TextChanges"/>
             </VerticalStackLayout>
 
             <Button Text="Enviar" IsVisible="{Binding CanSend}" Command="{Binding BtnEnviar}"/>
