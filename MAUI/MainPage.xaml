@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vmodel="clr-namespace:MAUI.Models"
+             x:Class="MAUI.MainPage"
+              Title="">
+
+    <ContentPage.BindingContext>
+        <vmodel:MainPageVM/>
+    </ContentPage.BindingContext>
+
+    <Grid ColumnDefinitions="Auto,3,*"> 
+        <VerticalStackLayout Spacing="32" MinimumWidthRequest="300" Grid.Column="0" HorizontalOptions="FillAndExpand" Padding="15">
+            <VerticalStackLayout IsVisible="{Binding CanConnect}">
+                <Label Text="Group"/>
+                <Entry x:Name="eGrupo"/>
+            </VerticalStackLayout>
+
+            <VerticalStackLayout IsVisible="{Binding CanConnect}">
+                <Label Text="Usuario"/>
+                <Entry x:Name="eUsuario"/>
+            </VerticalStackLayout>
+
+            <Button Text="Conectar" IsVisible="{Binding CanConnect}" Command="{Binding BtnConectar}"/>
+            
+            
+            
+            
+
+            <VerticalStackLayout IsVisible="{Binding CanSend}">
+                <Label Text="Mensaje"/>
+                <Editor x:Name="eMensaje" AutoSize="TextChanges"/>
+            </VerticalStackLayout>
+
+            <Button Text="Enviar" IsVisible="{Binding CanSend}" Command="{Binding BtnEnviar}"/>
+            <Button Text="Desconectar" IsVisible="{Binding CanSend}" Command="{Binding BtnDesconectar}"/>
+            
+        </VerticalStackLayout>
+
+        <BoxView Grid.Column="1" BackgroundColor="Grey" />
+
+        <ListView Grid.Column="2" HorizontalOptions="FillAndExpand" ItemsSource="{Binding Mensajes}">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <VerticalStackLayout Padding="5">
+                            <Label Text="{Binding Usuario}" FontSize="Small" TextColor="DodgerBlue"/>
+                            <Label Text="{Binding Mensaje}" FontSize="Medium"/>
+                        </VerticalStackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+
+</ContentPage>
